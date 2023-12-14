@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Chat Room</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    #chat-container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #messages {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      overflow-y: scroll;
+      max-height: 300px;
+    }
+
+    #messages li {
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 8px;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="chat-container">
+  <ul id="messages"></ul>
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="usernameInput" placeholder="Enter your username">
+    <br>
+    <input type="text" id="messageInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  // Placeholder function for sending messages
+  function sendMessage() {
+    var usernameInput = document.getElementById('usernameInput');
+    var messageInput = document.getElementById('messageInput');
+    var username = usernameInput.value.trim();
+    var message = messageInput.value.trim();
+    
+    if (username !== '' && message !== '') {
+      var messagesContainer = document.getElementById('messages');
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(username + ': ' + message));
+      messagesContainer.appendChild(li);
+
+      // Clear the input fields
+      usernameInput.value = '';
+      messageInput.value = '';
+    }
+  }
+</script>
+
+</body>
+</html>
